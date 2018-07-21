@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Login from './containers/Login';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -7,7 +9,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <h1>This is a good start :) Time to create awesome things!</h1>
+      <Login />
     );
   }
 }

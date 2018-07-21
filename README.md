@@ -73,6 +73,8 @@ npm run test
 
 ## Refactoring / Improvements
 
+* Texts should be FormattedMessages from react-intl (or similar intl libs) to support multilingual functionality.
+
 * Bundles could be splitted using Webpack's code-splitter (chunks) and react-loadable.
 
 * Stateless components and simple Stateful ones could be isolated in a global UI package to reuse it as a dependency, also for other projects. That way we can develop with a shared library of components. 

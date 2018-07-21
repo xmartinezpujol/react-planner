@@ -27,7 +27,7 @@ const size = {
 const template = (props) => {
   const templateRemake = {
     default: {
-      background: props.type ? COLOR_PALETTE[props.type] : COLOR_PALETTE.red,
+      background: props.type ? COLOR_PALETTE[props.type] : COLOR_PALETTE.blue,
       border: 0,
       color: 'white',
     },
@@ -37,10 +37,10 @@ const template = (props) => {
       borderColor: COLOR_PALETTE[props.bordercolor],
       color: props.bordercolor ? COLOR_PALETTE[props.bordercolor] : COLOR_PALETTE.night,
       ':hover:enabled': {
-        background: (props.bordercolor === 'black' || !props.bordercolor) ?
-          COLOR_PALETTE.night : 'white',
-        color: (props.bordercolor === 'black' || !props.bordercolor) ?
-          'white' : props.bordercolor,
+        background: (props.bordercolor === 'black' || !props.bordercolor)
+          ? COLOR_PALETTE.night : 'white',
+        color: (props.bordercolor === 'black' || !props.bordercolor)
+          ? 'white' : props.bordercolor,
       },
     },
     link: {
@@ -49,8 +49,8 @@ const template = (props) => {
       color: props.bordercolor ? COLOR_PALETTE[props.bordercolor] : COLOR_PALETTE.night,
       ':hover:enabled': {
         boxShadow: 'none',
-        color: props.bordercolor ?
-          props.bordercolor === 'black' ? 'white' : props.bordercolor
+        color: props.bordercolor
+          ? props.bordercolor === 'black' ? 'white' : props.bordercolor
           : 'black',
       },
     },
@@ -114,16 +114,17 @@ const ButtonBox = glamorous.button(
 );
 
 const Button = props => (
-  <ButtonBox {...props} >
-    {props.icon &&
-    <Icon
-      iconWeight={props.iconWeight}
-      iconSize={props.iconSize}
-      iconWidth={props.iconWidth}
-      className={`${props.iFont} ${props.iFont}-${props.icon}`}
-      aria-hidden="true"
-    />
-    }
+  <ButtonBox {...props}>
+    {props.icon
+    && (
+      <Icon
+        iconWeight={props.iconWeight}
+        iconSize={props.iconSize}
+        iconWidth={props.iconWidth}
+        className={`${props.iFont} ${props.iFont}-${props.icon}`}
+        aria-hidden="true"
+      />
+    )}
     {props.children}
   </ButtonBox>
 );

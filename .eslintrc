@@ -13,7 +13,8 @@
     "prefer-promise-reject-errors": 0,
     "import/no-extraneous-dependencies": 0,
     "no-plusplus": 0,
-    "no-underscore-dangle": 0
+    "no-underscore-dangle": 0,
+    "react/destructuring-assignment": 0
   },
   "env": {
     "browser": true,
