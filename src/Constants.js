@@ -4,7 +4,7 @@ export const COLOR_PALETTE = {
   // Primary
   red: '#FF0049',
   red_light: '#FD5E74',
-  blue: '#1461DF',
+  blue: '#0564E5',
   blue_light: '#2ab8df',
   text: '#6E7A83',
   text2: '#B6BABD',

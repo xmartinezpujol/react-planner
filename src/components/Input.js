@@ -13,7 +13,7 @@ const InputContainer = glamorous.div(
     alignItems: 'center',
     '> i': {
       position: 'absolute',
-      right: 20,
+      right: 25,
     },
   }, props => ({
     minWidth: props.mWidth ? props.mWidth : 'auto',
