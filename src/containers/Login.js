@@ -1,10 +1,11 @@
 import React from 'react';
 import glamorous from 'glamorous';
 import * as glamor from 'glamor';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
-import Button from '../components/Button';
+import { connect } from 'react-redux';
+import { withRouter, Link } from 'react-router-dom';
+import { COLOR_PALETTE } from '../Constants';
+
 import LoginForm from '../components/LoginForm';
 import Logo from '../components/Logo';
 import Text from '../components/Text';
@@ -12,6 +13,7 @@ import View from '../components/View';
 
 import * as credentialsActions from '../redux/modules/Login/credentials';
 import * as statusAction from '../redux/modules/Global/status';
+
 
 const fadeIn = glamor.css.keyframes({
   '0%': { opacity: 0 },
@@ -35,9 +37,11 @@ const LoginContainer = glamorous(View)(
   }),
 );
 
-const ForgottenPwd = glamorous(Button)({
+const ForgottenPwd = glamorous(Link)({
   fontSize: 16,
-  margin: 0,
+  marginTop: 20,
+  textDecoration: 'none',
+  color: COLOR_PALETTE.blue,
 });
 
 class Login extends React.Component {
@@ -125,10 +129,7 @@ class Login extends React.Component {
           isLoading={isLoading}
           onSubmit={this.handleRequests}
         />
-        <ForgottenPwd
-          bordercolor="blue"
-          template="link"
-        >
+        <ForgottenPwd to="/forgot">
           Forgot your password?
         </ForgottenPwd>
       </LoginContainer>

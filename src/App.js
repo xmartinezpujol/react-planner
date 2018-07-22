@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import ForgotPwd from './containers/ForgotPwd';
 import Login from './containers/Login';
 import WeekPlanner from './containers/WeekPlanner';
 
@@ -28,10 +29,14 @@ class App extends React.Component {
             path="/login"
             component={Login}
           />
-          {this.props.status.isLogged &&
+          <Route
+            path="/forgot"
+            component={ForgotPwd}
+          />
+          {status.isLogged &&
             <Redirect to="/planner/week" />
           }
-          {!this.props.status.isLogged &&
+          {!status.isLogged &&
             <Redirect to="/login" />
           }
         </Switch>
