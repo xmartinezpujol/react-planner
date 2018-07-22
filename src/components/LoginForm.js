@@ -99,7 +99,7 @@ const renderPassword = (
 );
 
 
-const LoginForm = props => {
+const LoginForm = (props) => {
   const {
     invalid,
     pristine,

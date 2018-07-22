@@ -68,8 +68,6 @@ const template = (props) => {
 
 const Icon = glamorous.i(
   {
-    fontSize: 22,
-    fontWeight: 300,
     display: 'flex',
   },
   props => ({
@@ -104,7 +102,7 @@ const ButtonBox = glamorous.button(
     ...template(props),
     ...size[props.size],
     borderRadius: shape[props.shape],
-    fontWeight: props.bold ? 700 : 300,
+    fontWeight: props.bold,
     minWidth: props.fullWidth ? '100%' : 'initial',
     textTransform: props.uppercase ? 'uppercase' : 'initial',
     transform: props.noanim ? 'none' : 'translateY(-1px)',
@@ -116,7 +114,7 @@ const ButtonBox = glamorous.button(
 
 const Button = props => (
   <ButtonBox {...props}>
-    {props.icon
+    {props.icon !== ''
     && (
       <Icon
         iconWeight={props.iconWeight}
@@ -134,16 +132,36 @@ Button.propTypes = {
   type: PropTypes.string,
   template: PropTypes.string,
   color: PropTypes.string,
+  bordercolor: PropTypes.string,
+  bold: PropTypes.bool,
   shape: PropTypes.string,
   size: PropTypes.string,
+  icon: PropTypes.string,
+  iconSize: PropTypes.number,
+  iconWeight: PropTypes.number,
+  iconWidth: PropTypes.number,
+  iFont: PropTypes.string,
+  fullWidth: PropTypes.bool,
+  noanim: PropTypes.bool,
+  uppercase: PropTypes.bool,
 };
 
 Button.defaultProps = {
   type: 'blue',
   template: 'default',
   color: 'blue',
+  bordercolor: COLOR_PALETTE.night,
+  bold: false,
   shape: 'default',
   size: 'medium',
+  icon: '',
+  iconSize: 22,
+  iconWeight: 300,
+  iconWidth: 22,
+  iFont: 'fa',
+  fullWidth: false,
+  noanim: false,
+  uppercase: false,
 };
 
 export default Button;

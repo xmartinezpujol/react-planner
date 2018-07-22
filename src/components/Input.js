@@ -153,6 +153,8 @@ Input.propTypes = {
   borderFocus: PropTypes.string,
   shape: PropTypes.string,
   size: PropTypes.string,
+  loading: PropTypes.bool,
+  togglePassword: PropTypes.bool,
 };
 
 Input.defaultProps = {
@@ -160,6 +162,8 @@ Input.defaultProps = {
   borderFocus: 'blue',
   shape: 'default',
   size: 'medium',
+  loading: false,
+  togglePassword: false,
 };
 
 export default Input;

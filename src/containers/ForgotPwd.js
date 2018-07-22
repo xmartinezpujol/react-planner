@@ -28,10 +28,6 @@ const ForgotPwdPage = glamorous(View)({
 });
 
 class ForgotPwd extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     // Force logout as we don't have a /logout route
     this.props.dispatch(statusAction.setLoginStatus(false));
@@ -58,7 +54,6 @@ class ForgotPwd extends React.Component {
       </ForgotPwdPage>
     );
   }
-
 }
 
 const mapStateToProps = state => ({
