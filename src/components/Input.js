@@ -1,6 +1,7 @@
 import React from 'react';
 import glamorous from 'glamorous';
 import * as glamor from 'glamor';
+import PropTypes from 'prop-types';
 
 import Button from './Button';
 
@@ -52,10 +53,10 @@ const InputBox = glamorous.input(
     },
   },
   props => ({
-    borderColor: COLOR_PALETTE[props.borderColor] || '#F4F4F4',
+    borderColor: COLOR_PALETTE[props.borderColor],
     borderRadius: props.shape ? shapeStyle[props.shape] : shapeStyle.default,
     ':focus': {
-      borderColor: props.borderFocus ? COLOR_PALETTE[props.borderFocus] : '#6E7A83',
+      borderColor: COLOR_PALETTE[props.borderFocus],
     },
   }),
 );
@@ -145,5 +146,20 @@ class Input extends React.Component {
     );
   }
 }
+
+Input.propTypes = {
+  type: PropTypes.string.isRequired,
+  borderColor: PropTypes.string,
+  borderFocus: PropTypes.string,
+  shape: PropTypes.string,
+  size: PropTypes.string,
+};
+
+Input.defaultProps = {
+  borderColor: 'spacewhite',
+  borderFocus: 'blue',
+  shape: 'default',
+  size: 'medium',
+};
 
 export default Input;

@@ -1,5 +1,6 @@
 import React from 'react';
 import glamorous from 'glamorous';
+import PropTypes from 'prop-types';
 
 import { COLOR_PALETTE } from '../Constants';
 
@@ -27,7 +28,7 @@ const size = {
 const template = (props) => {
   const templateRemake = {
     default: {
-      background: props.type ? COLOR_PALETTE[props.type] : COLOR_PALETTE.blue,
+      background: COLOR_PALETTE[props.type],
       border: 0,
       color: 'white',
     },
@@ -101,8 +102,8 @@ const ButtonBox = glamorous.button(
   },
   props => ({
     ...template(props),
-    ...size[props.size ? props.size : 'medium'],
-    borderRadius: props.shape ? shape[props.shape] : shape.default,
+    ...size[props.size],
+    borderRadius: shape[props.shape],
     fontWeight: props.bold ? 700 : 300,
     minWidth: props.fullWidth ? '100%' : 'initial',
     textTransform: props.uppercase ? 'uppercase' : 'initial',
@@ -128,5 +129,21 @@ const Button = props => (
     {props.children}
   </ButtonBox>
 );
+
+Button.propTypes = {
+  type: PropTypes.string,
+  template: PropTypes.string,
+  color: PropTypes.string,
+  shape: PropTypes.string,
+  size: PropTypes.string,
+};
+
+Button.defaultProps = {
+  type: 'blue',
+  template: 'default',
+  color: 'blue',
+  shape: 'default',
+  size: 'medium',
+};
 
 export default Button;

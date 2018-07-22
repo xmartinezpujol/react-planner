@@ -3,10 +3,9 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, boolean, select, number } from '@storybook/addon-knobs';
+import { withInfo } from '@storybook/addon-info';
 
 import Button from '../components/Button';
-
-import { COLOR_PALETTE } from '../Constants';
 
 const optionsTemplate = {
   login: 'facebook',
@@ -25,32 +24,35 @@ const optionsBorder = {
 
 storiesOf('Button', module)
   .addDecorator(withKnobs)
-  .add('default', () => {
-    const defaultTeamplate = 'default';
-    const defaultborderColor = 'black';
+  .add('default',
+    withInfo(`
+      <p>This a Button component.</p>
+    `)(() => {
+      const defaultTeamplate = 'default';
+      const defaultborderColor = 'black';
 
-    const label = 'Theme';
-    const label2 = 'Border Color';
+      const label = 'Theme';
+      const label2 = 'Border Color';
 
-    const template = select(label, optionsTemplate, defaultTeamplate);
-    const borderColor = select(label2, optionsBorder, defaultborderColor);
+      const template = select(label, optionsTemplate, defaultTeamplate);
+      const borderColor = select(label2, optionsBorder, defaultborderColor);
 
-    return (
-      <Button
-        border={boolean('Border', true)}
-        color={borderColor}
-        bordercolor={borderColor}
-        bold={boolean('Bold', true)}
-        disabled={boolean('Disabled', false)}
-        uppercase={boolean('Uppercase', true)}
-        template={template}
-        onClick={action('clicked')}
-        noanim={boolean('No Animation', false)}
-      >
-        {text('text 1', 'Button')}
-      </Button>
-    );
-  })
+      return (
+        <Button
+          border={boolean('Border', true)}
+          color={borderColor}
+          bordercolor={borderColor}
+          bold={boolean('Bold', true)}
+          disabled={boolean('Disabled', false)}
+          uppercase={boolean('Uppercase', true)}
+          template={template}
+          onClick={action('clicked')}
+          noanim={boolean('No Animation', false)}
+        >
+          {text('text 1', 'Button')}
+        </Button>
+      );
+    }))
   .add('with icon', () => {
     const defaultTeamplate = 'default';
     const defaultborderColor = 'black';

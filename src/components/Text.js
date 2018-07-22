@@ -1,5 +1,6 @@
 import React from 'react';
 import glamorous from 'glamorous';
+import PropTypes from 'prop-types';
 
 const Text = (props) => {
   const styles = {
@@ -202,7 +203,15 @@ const Text = (props) => {
   }
 
   const GlamorTextGenerator = glamorous(propOrDefault)(styles[props.type]);
-  return <GlamorTextGenerator style={props.style}>{props.children}</GlamorTextGenerator>;
+  return (
+    <GlamorTextGenerator style={props.style}>
+      {props.children}
+    </GlamorTextGenerator>
+  );
+};
+
+Text.propTypes = {
+  type: PropTypes.string.isRequired,
 };
 
 export default Text;

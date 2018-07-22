@@ -1,4 +1,5 @@
 import glamorous from 'glamorous';
+import PropTypes from 'prop-types';
 
 import { COLOR_PALETTE } from '../Constants';
 
@@ -36,5 +37,16 @@ const View = glamorous.div(props => (
     ...Container[props.container ? 'styles' : 'default'],
   }
 ));
+
+View.propTypes = {
+  type: PropTypes.string,
+  round: PropTypes.bool,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  justify: PropTypes.string,
+  align: PropTypes.string,
+  direction: PropTypes.string,
+  container: PropTypes.string,
+};
 
 export default View;
