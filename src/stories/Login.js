@@ -2,7 +2,7 @@ import React from 'react';
 import glamorous from 'glamorous';
 
 import { storiesOf } from '@storybook/react';
-import { withKnobs } from '@storybook/addon-knobs';
+import { withInfo } from '@storybook/addon-info';
 
 import Button from '../components/Button';
 import Input from '../components/Input';
@@ -13,18 +13,30 @@ import Logo from '../components/Logo';
 
 
 storiesOf('Login', module)
-  .add('default', () => {
-    return (
+  .add('default',
+    withInfo(`
+      <p>This a Login Container that manages User Login.</p>
+      
+      ##### No Required Props, data comes from Redux
+    `)(() => (
       <Login />
-    );
-  })
-  .add('loading', () => (
-    <Login initialState={{ isLoading: true }} />
-  ))
-  .add('error', () => (
-    <Login initialState={{ isError: true }} />
-  ));
-
+    )))
+  .add('loading',
+    withInfo(`
+      <p>This a Login Container that manages User Login.</p>
+      
+      ##### No Required Props, data comes from Redux
+    `)(() => (
+      <Login initialState={{ isLoading: true }} />
+    )))
+  .add('error',
+    withInfo(`
+      <p>This a Login Container that manages User Login.</p>
+      
+      ##### No Required Props, data comes from Redux
+    `)(() => (
+      <Login initialState={{ isError: true }} />
+    )));
 
 const LoginContainer = glamorous(View)({
   width: '100vw',

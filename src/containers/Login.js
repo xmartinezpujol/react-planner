@@ -1,35 +1,39 @@
 import React from 'react';
 import glamorous from 'glamorous';
+import * as glamor from 'glamor';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import Button from '../components/Button';
-import Input from '../components/Input';
+import LoginForm from '../components/LoginForm';
+import Logo from '../components/Logo';
 import Text from '../components/Text';
 import View from '../components/View';
 
-import Logo from '../components/Logo';
+import * as credentialsActions from '../redux/modules/Login/credentials';
+import * as statusAction from '../redux/modules/Global/status';
 
-const LoginContainer = glamorous(View)({
-  width: '100vw',
-  height: '100vh',
+const fadeIn = glamor.css.keyframes({
+  '0%': { opacity: 0 },
+  '100%': { opacity: 1 },
 });
 
-const InputLoginStyles = {
-  width: '100%',
-};
+const fadeOut = glamor.css.keyframes({
+  '0%': { opacity: 1 },
+  '100%': { opacity: 0 },
+});
 
-const LoginForm = glamorous(View)({
-  width: '90%',
-  '@media(min-width: 500px)': {
-    width: 375,
+const LoginContainer = glamorous(View)(
+  {
+    width: '100vw',
+    height: '100vh',
+    transition: 'all 0.6s ease',
+    animation: `${fadeIn} 1s ease`,
   },
-});
-
-const Submit = glamorous(Button)({
-  margin: '30px 0 5px 0',
-  width: '100%',
-  fontSize: 17,
-  justifyContent: 'center',
-});
+  props => ({
+    animation: `${props.isAnimating} 1s ease`,
+  }),
+);
 
 const ForgottenPwd = glamorous(Button)({
   fontSize: 16,
@@ -38,52 +42,103 @@ const ForgottenPwd = glamorous(Button)({
 
 class Login extends React.Component {
   constructor(props) {
-    super();
-    this.state = {};
+    super(props);
+    this.state = {
+      isLoading: false,
+      isAnimating: fadeIn,
+    };
+    this.handleRequests = this.handleRequests.bind(this);
+    this.stopAnimation = this.stopAnimation.bind(this);
+  }
+
+  componentDidMount() {
+    // Force logout as we don't have a /logout route
+    this.props.dispatch(statusAction.setLoginStatus(false));
+  }
+
+  stopAnimation() {
+    this.setState(() => ({
+      isAnimating: null,
+    }));
+  }
+
+  handleRequests(values) {
+    this.setState(() => ({
+      isLoading: true,
+    }));
+
+    if (this.props.credentials.filter(user => (
+      user.email === values.userEmail &&
+      user.password === values.userPassword)).length > 0) {
+      // User found, login
+      setTimeout(() => (
+        this.setState(() => ({
+          isLoading: false,
+          isAnimating: fadeOut,
+        }))
+      ), 500);
+      setTimeout(() => {
+        this.stopAnimation();
+        // Redirect to Planner
+        this.props.history.push(`/planner/${this.props.status.plannerMode}`);
+      }, 1000);
+      this.props.dispatch(statusAction.setLoginStatus(true));
+
+    // User not found, register & login
+    } else {
+      this.props.dispatch(
+        credentialsActions.createCredentials(
+          values.userEmail,
+          values.userPassword,
+        ),
+      );
+      this.setState(() => ({
+        isLoading: false,
+        isAnimating: fadeOut,
+      }));
+
+      // Login
+      setTimeout(() => {
+        this.stopAnimation();
+        // Redirect to Planner
+        this.props.history.push(`/planner/${this.props.status.plannerMode}`);
+      }, 1000);
+      this.props.dispatch(statusAction.setLoginStatus(true));
+    }
   }
 
   render() {
+    const { isLoading, isAnimating } = this.state;
     return (
       <LoginContainer
         direction="column"
         justify="center"
         align="center"
         type="spacewhite"
+        isAnimating={isAnimating}
       >
         <Logo />
         <Text type="p1" style={{ fontSize: 20, marginTop: 55 }}>
           Sign in to your account
         </Text>
-        <LoginForm align="center" justify="center" direction="column">
-          <Input
-            type="text"
-            placeholder="Email"
-            required
-            style={{ marginBottom: 15, marginTop: 15 }}
-            outerStyle={InputLoginStyles}
-            borderFocus="blue"
-          />
-          <Input
-            type="password"
-            placeholder="Password"
-            togglePassword
-            required
-            outerStyle={InputLoginStyles}
-            borderFocus="blue"
-          />
-          <Submit bold>
-            Sign in
-          </Submit>
-          <ForgottenPwd
-            bordercolor="blue"
-            template="link"
-          >
-            Forgot your password?
-          </ForgottenPwd>
-        </LoginForm>
+        <LoginForm
+          isLoading={isLoading}
+          onSubmit={this.handleRequests}
+        />
+        <ForgottenPwd
+          bordercolor="blue"
+          template="link"
+        >
+          Forgot your password?
+        </ForgottenPwd>
       </LoginContainer>
     );
   }
 }
 
-export default Login;
+const mapStateToProps = state => ({
+  credentials: state.credentials,
+  status: state.status,
+});
+
+export default withRouter(connect(mapStateToProps)(Login));

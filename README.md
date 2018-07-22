@@ -79,5 +79,7 @@ npm run test
 
 * Stateless components and simple Stateful ones could be isolated in a global UI package to reuse it as a dependency, also for other projects. That way we can develop with a shared library of components. 
 
+* When a proper Login system is created, login validation should be done on submit. Use something similar to this: https://redux-form.com/6.6.2/examples/submitvalidation/
+
 ### Tech Stack
 ReactJS, Redux, Glamorous, Storybook, Webpack4, Jest, Enzyme, Cypress.

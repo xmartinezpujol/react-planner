@@ -7,7 +7,7 @@ export const plannerStyles = {
       display: 'block',
       position: 'fixed',
       border: 'none',
-      background: '#ff544f',
+      background: '#0564E5',
       color: 'white',
       padding: '10px 15px',
       cursor: 'pointer',
