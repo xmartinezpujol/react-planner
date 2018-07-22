@@ -70,6 +70,7 @@ npm run test
 
 * Storybook is used for component development, following the Component Driven Design (CDD) mindset. Snapshots and UI testing could be added there also. This is a common ground with designers also to improve the companies visual Styleguide and use it as a UI Explorer.
 
+* I added 1 E2E test in Cypress showing how to trigger actions on Storybook. That way you can also run E2E test on UI Explorers. In the sample you can check that the Button action is triggered by Cypress.
 
 ## Refactoring / Improvements
 

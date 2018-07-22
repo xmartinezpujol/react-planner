@@ -83,8 +83,10 @@ class Input extends React.Component {
   }
 
   toggleType() {
-    this.setState(() => ({
-      togglePasswordStatus: this.state.togglePasswordStatus === 'password' ? 'text' : 'password',
+    this.setState(prevState => ({
+      togglePasswordStatus: prevState.togglePasswordStatus === 'password'
+        ? 'text'
+        : 'password',
     }));
   }
 
