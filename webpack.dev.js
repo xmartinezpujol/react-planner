@@ -13,7 +13,8 @@ module.exports = merge(common, {
   },
   plugins: [
     new webpack.DefinePlugin({
-      __API__: "''", // testing server
+      __API__: "'https://draliatest.azurewebsites.net/api'", // testing server
+      __API_AUTH_TOKEN__: "'NzSvsHgWN80FXBUJ'", // testing auth token
     }),
   ],
 });

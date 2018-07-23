@@ -30,15 +30,15 @@ const optionsColor = {
 const week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const freeSlots = Slots.filter(slot => slot.Taken !== true);
 
-const weeklySlots = [
-  freeSlots.slice(0, 1),
-  freeSlots.slice(2, 3),
-  freeSlots.slice(4, 5),
-  freeSlots.slice(6, 7),
-  freeSlots.slice(8, 9),
-  freeSlots.slice(10, 11),
-  freeSlots.slice(12, 13),
-];
+const weeklySlots = {
+  Monday: freeSlots.slice(0, 10),
+  Tuesday: freeSlots.slice(11, 20),
+  Wednesday: freeSlots.slice(21, 30),
+  Thursday: freeSlots.slice(31, 40),
+  Friday: freeSlots.slice(41, 48),
+  Saturday: freeSlots.slice(49, 55),
+  Sunday: freeSlots.slice(56, 60),
+};
 
 storiesOf('Table', module)
   .addDecorator(withKnobs)
@@ -60,20 +60,22 @@ storiesOf('Table', module)
             dataColumns={week}
             headerColor={headerColor}
           >
-            {week.map((day, index) => (
-              <Cell
-                justify="center"
-                align="center"
-                key={uniqid()}
-                type={cellColor}
-              >
-                {weeklySlots[index].map(item => (
-                  <Text key={uniqid()} type="p1">
-                    {moment(item.Start).format('HH:mm')}
-                  </Text>
-                ))}
-              </Cell>
-            ))}
+            <Rows>
+              {week.map(day => (
+                <Cell
+                  align="center"
+                  key={uniqid()}
+                  type={cellColor}
+                  direction="column"
+                >
+                  {weeklySlots[day].map(item => (
+                    <Text key={uniqid()} type="p1">
+                      {moment(item.Start).format('HH:mm')}
+                    </Text>
+                  ))}
+                </Cell>
+              ))}
+            </Rows>
           </Table>
         </TableContainer>
       </View>
@@ -96,4 +98,8 @@ const TableContainer = glamorous(View)({
   '@media(min-width: 1200px)': {
     maxWidth: 1430,
   },
+});
+
+const Rows = glamorous(View)({
+
 });

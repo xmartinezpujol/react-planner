@@ -23,27 +23,28 @@ const Column = glamorous(View)({
   },
 });
 
-
 const Table = props => (
-  <React.Fragment>
-    {props.dataColumns.map(headerText => (
-      <Column
-        justify="center"
-        align="center"
-        key={uniqid()}
-        direction="column"
-      >
-        <Header
+  <View direction="column">
+    <View>
+      {props.dataColumns.map(headerText => (
+        <Column
           justify="center"
           align="center"
-          type={props.headerColor}
+          key={uniqid()}
+          direction="column"
         >
-          {headerText}
-        </Header>
-        {props.children}
-      </Column>
-    ))}
-  </React.Fragment>
+          <Header
+            justify="center"
+            align="center"
+            type={props.headerColor}
+          >
+            {headerText}
+          </Header>
+        </Column>
+      ))}
+    </View>
+    {props.children}
+  </View>
 );
 
 Table.propTypes = {
