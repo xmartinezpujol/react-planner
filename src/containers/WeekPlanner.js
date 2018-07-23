@@ -13,6 +13,10 @@ import Text from '../components/Text';
 import View from '../components/View';
 
 const Navigator = glamorous(View)({
+  position: 'fixed',
+  top: 0,
+  width: '100%',
+  padding: 10,
   marginBottom: 20,
 });
 
@@ -23,13 +27,8 @@ const Title = glamorous(View)({
   },
 });
 
-const NavLeft = glamorous.div({
-
-});
-
-const NavRight = glamorous.div({
-
-});
+const NavLeft = glamorous.div({});
+const NavRight = glamorous.div({});
 
 class WeekPlanner extends React.Component {
   constructor(props) {
@@ -45,6 +44,23 @@ class WeekPlanner extends React.Component {
     };
   }
 
+  handleRedirection(direction) {
+    let newTime;
+    if (direction === 'prev') {
+      newTime = moment(this.state.id).startOf('week').subtract(7, 'days').format('YYYYMMDD');
+      this.props.history.push(`/planner/week/${newTime}`);
+      this.setState(() => ({
+        id: newTime,
+      }));
+    } else {
+      newTime = moment(this.state.id).startOf('week').add(7, 'days').format('YYYYMMDD');
+      this.props.history.push(`/planner/week/${newTime}`);
+      this.setState(() => ({
+        id: newTime,
+      }));
+    }
+  }
+
   render() {
     const { id } = this.state;
     return (
@@ -53,11 +69,16 @@ class WeekPlanner extends React.Component {
         justify="center"
         align="center"
         direction="column"
-        style={{ margin: '55px auto' }}
+        style={{ margin: '75px auto' }}
       >
-        <Navigator align="center" justify="center">
+        <Navigator
+          type="purewhite"
+          align="center"
+          justify="center"
+        >
           <NavLeft>
             <Button
+              onClick={() => this.handleRedirection('prev')}
               type="green"
               iFont="fa"
               iFontSize={22}
@@ -97,6 +118,7 @@ class WeekPlanner extends React.Component {
           </Title>
           <NavRight>
             <Button
+              onClick={() => this.handleRedirection('next')}
               type="green"
               iFont="fa"
               iFontSize={22}

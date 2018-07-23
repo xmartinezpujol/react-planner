@@ -19,7 +19,7 @@ const Column = glamorous(View)({
     minWidth: 200,
   },
   '@media(min-width: 768px)': {
-    minWidth: 120,
+    minWidth: 150,
   },
 });
 

@@ -1,10 +1,12 @@
 import React from 'react';
 import glamorous from 'glamorous';
+import * as glamor from 'glamor';
 import moment from 'moment/moment';
 import uniqid from 'uniqid';
 
 import { connect } from 'react-redux';
 
+import Loader from '../components/Loader';
 import Table from '../components/Table';
 import Text from '../components/Text';
 import View from '../components/View';
@@ -16,6 +18,11 @@ import {
 
 const week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
+const fadeIn = glamor.css.keyframes({
+  '0%': { opacity: 0 },
+  '100%': { opacity: 1 },
+});
+
 const Cell = glamorous(View)({
   width: '100%',
   minHeight: '100%',
@@ -24,15 +31,18 @@ const Cell = glamorous(View)({
 
 const TableContainer = glamorous(View)({
   maxWidth: '100%',
+  overflow: 'auto',
+  transition: 'all 0.6s ease',
+  animation: `${fadeIn} 1s ease`,
   '@media(min-width: 768px)': {
     width: 720,
-    justifyContent: 'center',
   },
   '@media(min-width: 992px)': {
     width: 920,
   },
   '@media(min-width: 1200px)': {
-    maxWidth: 1430,
+    width: 1430,
+    justifyContent: 'center',
   },
 });
 
@@ -41,31 +51,57 @@ const Error = glamorous(View)({
   marginTop: 50,
 });
 
+const FullWidthWrapper = glamorous.div({
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  zIndex: 100,
+  display: 'flex',
+  width: '100vw',
+  height: '100vh',
+  alignItems: 'center',
+  justifyContent: 'center',
+});
+
 class WeekTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isValid: true,
     };
+    this.updateTime = this.updateTime.bind(this);
   }
 
   componentDidMount() {
+    this.updateTime(this.props);
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.time !== this.props.time) {
+      this.updateTime(newProps);
+    }
+  }
+
+  componentWillUnmount() {
+    this.props.dispatch(weeklySlotsAction.resetSlotsWeekly());
+  }
+
+  updateTime(props) {
     // Failsafe
-    if (moment(this.props.time).weekday() !== 0) {
+    if (moment(props.time).weekday() !== 0) {
       this.setState(() => ({
         isValid: false,
       }));
       return;
     }
 
-    this.props.dispatch(weeklySlotsAction.fetchSlotsWeekly(
-      this.props.time,
+    // Reset first so we see a loading time
+    props.dispatch(weeklySlotsAction.resetSlotsWeekly());
+
+    props.dispatch(weeklySlotsAction.fetchSlotsWeekly(
+      props.time,
       __API_AUTH_TOKEN__,
     ));
-  }
-
-  componentWillUnmount() {
-    this.props.dispatch(weeklySlotsAction.resetSlotsWeekly());
   }
 
   render() {
@@ -88,7 +124,7 @@ class WeekTable extends React.Component {
                     direction="column"
                   >
                     {weeklySlotsByDay[day].map(item => (
-                      <Text key={uniqid()} type="p1">
+                      <Text key={uniqid()} type="p1" style={{ margin: 6 }}>
                         {moment(item.Start).format('HH:mm')}
                       </Text>
                     ))}
@@ -99,9 +135,9 @@ class WeekTable extends React.Component {
           </TableContainer>
         }
         {weeklyslots.isLoading && isValid &&
-          <Text type="p1">
-            Loading...
-          </Text>
+          <FullWidthWrapper>
+            <Loader color="green" />
+          </FullWidthWrapper>
         }
         {!isValid &&
           <Error

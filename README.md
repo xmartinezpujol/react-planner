@@ -90,5 +90,7 @@ npm run test
 
 * A route could be added also for /planner/weekly/:idTime/book/:idSlot (or something like that). Then catch the idSlot to trigger the Booking modal on page load. Cool stuff if you want to pass direct links for booking to the user or let them share.
 
+* TableHeader could be fixed also for long tables. 
+
 ### Tech Stack
 ReactJS, Redux, Glamorous, Storybook, Webpack4, Jest, Enzyme, Cypress.
