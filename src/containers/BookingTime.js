@@ -22,7 +22,12 @@ class BookingTime extends React.Component {
   render() {
     const { slot } = this.props;
     return (
-      <Button template="link" onClick={this.handleBooking}>
+      <Button
+        disabled={slot.Taken}
+        size="small"
+        template="link"
+        onClick={this.handleBooking}
+      >
         <Text
           type="p1"
           style={{
