@@ -45,7 +45,7 @@ npm run test
 
 * Snapshot testing is also included.
 
-* E2E tests will be done in Cypress (pending).
+* E2E tests done in Cypress.
 
 
 ### Workflow
@@ -68,7 +68,7 @@ npm run test
 
 * Storybook is used for component development, following the Component Driven Design (CDD) mindset. Snapshots and UI testing could be added there also. This is a common ground with designers also to improve the companies visual Styleguide and use it as a UI Explorer.
 
-* I added 1 E2E test in Cypress showing how to trigger actions on Storybook. That way you can also run E2E test on UI Explorers. In the sample you can check that the Button action is triggered by Cypress.
+* I added 1 E2E test in Cypress showing how to trigger actions on Storybook. That way you can also run E2E tests on UI Explorers. In the sample you can check that the Button action is triggered by Cypress.
 
 * I added React Router for routing to scale this app in the future.
 
@@ -87,6 +87,8 @@ npm run test
 * When a proper Login system is created, login validation should be done on submit. Use something similar to this: https://redux-form.com/6.6.2/examples/submitvalidation/
 
 * Finish all documentation in Storybook and format it a bit better with markdown (atm some components have that "show info" button, make that info available in all the UI explorer).
+
+* A route could be added also for /planner/weekly/:idTime/book/:idSlot (or something like that). Then catch the idSlot to trigger the Booking modal on page load. Cool stuff if you want to pass direct links for booking to the user or let them share.
 
 ### Tech Stack
 ReactJS, Redux, Glamorous, Storybook, Webpack4, Jest, Enzyme, Cypress.
