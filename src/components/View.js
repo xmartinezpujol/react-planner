@@ -46,7 +46,7 @@ View.propTypes = {
   justify: PropTypes.string,
   align: PropTypes.string,
   direction: PropTypes.string,
-  container: PropTypes.string,
+  container: PropTypes.bool,
 };
 
 export default View;

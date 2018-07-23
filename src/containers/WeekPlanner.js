@@ -1,5 +1,7 @@
 import React from 'react';
 
+import WeekTable from './WeekTable';
+
 class WeekPlanner extends React.Component {
   constructor(props) {
     super(props);
@@ -7,7 +9,7 @@ class WeekPlanner extends React.Component {
 
   render() {
     return (
-      <h1>Here goes the planner logic</h1>
+      <WeekTable />
     );
   }
 
