@@ -15,6 +15,7 @@ import View from '../components/View';
 const Navigator = glamorous(View)({
   position: 'fixed',
   top: 0,
+  zIndex: 100,
   width: '100%',
   padding: 10,
   marginBottom: 20,

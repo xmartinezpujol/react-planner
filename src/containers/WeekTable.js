@@ -11,6 +11,8 @@ import Table from '../components/Table';
 import Text from '../components/Text';
 import View from '../components/View';
 
+import BookingTime from './BookingTime';
+
 import * as weeklySlotsAction from '../redux/modules/Slots/weekly';
 import {
   getWeeklySlotsByDay,
@@ -124,9 +126,7 @@ class WeekTable extends React.Component {
                     direction="column"
                   >
                     {weeklySlotsByDay[day].map(item => (
-                      <Text key={uniqid()} type="p1" style={{ margin: 6 }}>
-                        {moment(item.Start).format('HH:mm')}
-                      </Text>
+                      <BookingTime key={uniqid()} slot={item} />
                     ))}
                   </Cell>
                 ))}
