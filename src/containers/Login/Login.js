@@ -4,15 +4,15 @@ import * as glamor from 'glamor';
 
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
-import { COLOR_PALETTE } from '../Constants';
+import { COLOR_PALETTE } from '../../Constants';
 
-import LoginForm from '../components/LoginForm';
-import Logo from '../components/Logo';
-import Text from '../components/Text';
-import View from '../components/View';
+import LoginForm from '../../components/LoginForm';
+import Logo from '../../components/Logo';
+import Text from '../../components/Text';
+import View from '../../components/View';
 
-import * as credentialsActions from '../redux/modules/Login/credentials';
-import * as statusAction from '../redux/modules/Global/status';
+import * as credentialsActions from '../../redux/modules/Login/credentials';
+import * as statusAction from '../../redux/modules/Global/status';
 
 
 const fadeIn = glamor.css.keyframes({

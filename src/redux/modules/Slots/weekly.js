@@ -34,7 +34,7 @@ export const resetSlotsWeekly = () => ({
 export const fetchSlotsWeekly = (mondayDate, authToken) => {
   const url = `${__API__}/availability/GetWeeklySlots/${mondayDate}`;
   const headers = new Headers();
-
+  console.log('called');
   headers.append('Accept', 'application/json');
   headers.append('credentials', 'include');
   headers.append('ApiKey', authToken);

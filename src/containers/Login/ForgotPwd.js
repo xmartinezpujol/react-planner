@@ -4,12 +4,12 @@ import * as glamor from 'glamor';
 
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
-import { COLOR_PALETTE } from '../Constants';
+import { COLOR_PALETTE } from '../../Constants';
 
-import View from '../components/View';
-import Text from '../components/Text';
+import View from '../../components/View';
+import Text from '../../components/Text';
 
-import * as statusAction from '../redux/modules/Global/status';
+import * as statusAction from '../../redux/modules/Global/status';
 
 const fadeIn = glamor.css.keyframes({
   '0%': { opacity: 0 },

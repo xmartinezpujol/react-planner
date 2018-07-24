@@ -8,9 +8,9 @@ import {
 import moment from 'moment';
 import { connect } from 'react-redux';
 
-import ForgotPwd from './containers/ForgotPwd';
-import Login from './containers/Login';
-import WeekPlanner from './containers/WeekPlanner';
+import ForgotPwd from './containers/Login/ForgotPwd';
+import Login from './containers/Login/Login';
+import WeekPlanner from './containers/Planner/WeekPlanner';
 
 // Moment setup
 moment.locale('es');
@@ -23,6 +23,10 @@ const App = props => (
         path="/login"
         component={Login}
       />
+      <Route
+        path="/forgot"
+        component={ForgotPwd}
+      />
       {!props.status.isLogged &&
         <Redirect to="/login" />
       }
@@ -33,10 +37,6 @@ const App = props => (
       {props.status.isLogged &&
         <Redirect to={`/planner/week/${thisMonday}`} />
       }
-      <Route
-        path="/forgot"
-        component={ForgotPwd}
-      />
     </Switch>
     <div id="modal" />
   </React.Fragment>

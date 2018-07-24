@@ -102,7 +102,7 @@ const ButtonBox = glamorous.button(
     ...template(props),
     ...size[props.size],
     borderRadius: shape[props.shape],
-    fontWeight: props.bold,
+    fontWeight: props.bold ? 700 : 500,
     minWidth: props.fullWidth ? '100%' : 'initial',
     textTransform: props.uppercase ? 'uppercase' : 'initial',
     transform: props.noanim ? 'none' : 'translateY(-1px)',

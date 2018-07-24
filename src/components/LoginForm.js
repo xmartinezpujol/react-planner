@@ -63,8 +63,7 @@ const renderEmail = ({ input, type, meta: { touched, error } }) => (
           {error}
         </span>
       </Error>
-    )
-    )}
+    ))}
   </React.Fragment>
 );
 
@@ -93,8 +92,7 @@ const renderPassword = (
             {error}
           </span>
         </Error>
-      )
-      )}
+      ))}
   </React.Fragment>
 );
 

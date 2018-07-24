@@ -6,17 +6,17 @@ import uniqid from 'uniqid';
 
 import { connect } from 'react-redux';
 
-import Loader from '../components/Loader';
-import Table from '../components/Table';
-import Text from '../components/Text';
-import View from '../components/View';
+import Loader from '../../components/Loader';
+import Table from '../../components/Table';
+import Text from '../../components/Text';
+import View from '../../components/View';
 
 import BookingTime from './BookingTime';
 
-import * as weeklySlotsAction from '../redux/modules/Slots/weekly';
+import * as weeklySlotsAction from '../../redux/modules/Slots/weekly';
 import {
   getWeeklySlotsByDay,
-} from '../redux/modules/selectors';
+} from '../../redux/modules/selectors';
 
 const week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
@@ -97,6 +97,13 @@ class WeekTable extends React.Component {
       return;
     }
 
+    // Back to normal
+    if (!this.state.isValid) {
+      this.setState(() => ({
+        isValid: true,
+      }));
+    }
+
     // Reset first so we see a loading time
     props.dispatch(weeklySlotsAction.resetSlotsWeekly());
 
@@ -107,7 +114,7 @@ class WeekTable extends React.Component {
   }
 
   render() {
-    const { weeklySlotsByDay, weeklyslots } = this.props;
+    const { weeklySlotsByDay, weeklyslots, time } = this.props;
     const { isValid } = this.state;
     return (
       <React.Fragment>
@@ -126,7 +133,7 @@ class WeekTable extends React.Component {
                     direction="column"
                   >
                     {weeklySlotsByDay[day].map(item => (
-                      <BookingTime key={uniqid()} slot={item} />
+                      <BookingTime key={uniqid()} slot={item} currWeek={time} />
                     ))}
                   </Cell>
                 ))}

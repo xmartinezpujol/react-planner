@@ -92,5 +92,11 @@ npm run test
 
 * TableHeader could be fixed also for long tables. 
 
+* In case of really long slot rendering in tables (huge number of rows) we could use React Virtualized for dynamic & virtualized lists. Better performance.
+
+* Dev environment could be made in Docker containers.
+
+* Error handling for API calls. I could use status codes of Promises, error messages from the server, etc...
+
 ### Tech Stack
 ReactJS, Redux, Glamorous, Storybook, Webpack4, Jest, Enzyme, Cypress.
