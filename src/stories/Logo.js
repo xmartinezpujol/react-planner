@@ -17,7 +17,7 @@ const optionsColor = {
   title: 'title',
 };
 
-storiesOf('Logos', module)
+storiesOf('Logo', module)
   .addDecorator(withKnobs)
   .add('Docplanner', () => {
     const defaultLogoColor = 'business';

@@ -39,6 +39,7 @@ storiesOf('Button', module)
 
       return (
         <Button
+          className="btn-default"
           border={boolean('Border', true)}
           color={borderColor}
           bordercolor={borderColor}

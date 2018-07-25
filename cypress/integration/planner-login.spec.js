@@ -21,7 +21,7 @@ context('Storybook', () => {
       // Now get the iframe for the components and make assertions on that.
       cy.get('#storybook-preview-iframe').then(($iframe) => {
         const doc = $iframe.contents();
-        iget(doc, 'button').click();
+        iget(doc, '.btn-default').click();
       });
     });
   });

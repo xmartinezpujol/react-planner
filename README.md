@@ -100,5 +100,9 @@ npm run test
 
 * Error handling for API calls. I could use status codes of Promises, error messages from the server, etc...
 
+* Add modals for successful booking messages & warnings/errors.
+
+* There's a case that should be controlled when somebody books the same slot with different users/data. You can do that before receiving updates from the app. It could be controlled with realtime between client/server (like events React-NodeJS), Pub/Sub patterns (like subscriptions in GraphQL), streams (RxJS) or just with more control between Front/Back.
+
 ### Tech Stack
 ReactJS, Redux, Glamorous, Storybook, Webpack4, Jest, Enzyme, Cypress.

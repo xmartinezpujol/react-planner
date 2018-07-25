@@ -43,7 +43,7 @@ class ForgotPwd extends React.Component {
         direction="column"
       >
         <Text type="p1">
-          Here goes forgotten password form. This is just a placeholder.
+          Here goes the forgotten password form. This is just a placeholder.
         </Text>
         <Text type="p1">
           Left it blank to see if routing is working only :)

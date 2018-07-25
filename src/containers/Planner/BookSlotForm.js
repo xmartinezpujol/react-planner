@@ -18,7 +18,7 @@ const phone = value => value && value.length !== 9 && !/^[679]{1}[0-9]{8}$/.test
   : undefined;
 
 const FormContainer = glamorous.form({
-  width: '90%',
+  width: '75vw',
   '@media(min-width: 500px)': {
     width: 500,
   },
@@ -40,6 +40,19 @@ const Error = glamorous.div({
   color: 'red',
   textAlign: 'center',
   marginBottom: 15,
+});
+
+const Name = glamorous(Input)({
+  '@media(min-width: 500px)': {
+    marginRight: 20,
+  },
+});
+
+const FullName = glamorous(View)({
+  flexDirection: 'column',
+  '@media(min-width: 500px)': {
+    flexDirection: 'row',
+  },
 });
 
 const renderEmail = ({ input, type, meta: { touched, error } }) => (
@@ -86,13 +99,12 @@ const renderPhone = ({ input, type, meta: { touched, error } }) => (
 
 const renderName = ({ input, type, meta: { touched, error } }) => (
   <React.Fragment>
-    <Input
+    <Name
       {...input}
       type={type}
       placeholder="Name"
       outerStyle={InputBookSlotStyles}
       borderFocus="green"
-      style={{ marginRight: 20 }}
     />
     {touched &&
     ((error && error !== 'Required' &&
@@ -133,7 +145,7 @@ const BookSlotForm = (props) => {
   } = props;
   return (
     <FormContainer onSubmit={props.handleSubmit}>
-      <View>
+      <FullName>
         <Field
           name="userName"
           type="text"
@@ -148,7 +160,7 @@ const BookSlotForm = (props) => {
           component={renderSurname}
           validate={required}
         />
-      </View>
+      </FullName>
       <Field
         name="userEmail"
         type="email"
