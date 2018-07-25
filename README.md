@@ -2,7 +2,7 @@
 
 ![React Planner](planner.png?raw=true "React Planner")
 
-### Client localhost
+### Client localhost (http://localhost:3001)
 Node/NPM required to install dependencies.
 
 Clone rep
