@@ -9,7 +9,8 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "css-16os3bm",
+          "class": "css-1euaqi2",
+          "type": "text",
         },
         "children": Array [],
         "name": "input",
@@ -20,9 +21,11 @@ initialize {
         "type": "tag",
         "x-attribsNamespace": Object {
           "class": undefined,
+          "type": undefined,
         },
         "x-attribsPrefix": Object {
           "class": undefined,
+          "type": undefined,
         },
       },
     ],

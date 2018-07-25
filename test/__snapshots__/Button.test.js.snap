@@ -4,7 +4,9 @@ exports[`Button renders correctly 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "css-32m8iy",
+      "class": "css-1f9hm3w",
+      "icon": "",
+      "type": "blue",
     },
     "children": Array [
       Object {
@@ -37,9 +39,13 @@ initialize {
     "type": "tag",
     "x-attribsNamespace": Object {
       "class": undefined,
+      "icon": undefined,
+      "type": undefined,
     },
     "x-attribsPrefix": Object {
       "class": undefined,
+      "icon": undefined,
+      "type": undefined,
     },
   },
   "_root": [Circular],

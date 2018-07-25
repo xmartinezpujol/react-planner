@@ -148,7 +148,7 @@ class Input extends React.Component {
 }
 
 Input.propTypes = {
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
   borderColor: PropTypes.string,
   borderFocus: PropTypes.string,
   shape: PropTypes.string,
@@ -158,6 +158,7 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
+  type: 'text',
   borderColor: 'spacewhite',
   borderFocus: 'blue',
   shape: 'default',
