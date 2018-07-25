@@ -1,6 +1,6 @@
 # React Planner
 
-![React Planner](/planner.PNG?raw=true "React Planner")
+![React Planner](planner.PNG?raw=true "React Planner")
 
 ### Client localhost
 Node/NPM required to install dependencies.
