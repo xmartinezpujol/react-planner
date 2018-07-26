@@ -57,6 +57,7 @@ class BookingTime extends React.Component {
     return (
       <React.Fragment>
         <Button
+          type="transparent"
           disabled={slot.Taken}
           size="small"
           template="link"

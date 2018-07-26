@@ -170,7 +170,7 @@ const BookSlotForm = (props) => {
       />
       <Field
         name="userPhone"
-        type="phone"
+        type="tel"
         required
         validate={[phone, required]}
         component={renderPhone}

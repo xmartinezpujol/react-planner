@@ -45,7 +45,7 @@ const template = (props) => {
       },
     },
     link: {
-      backgroundColor: 'transparent',
+      backgroundColor: COLOR_PALETTE[props.type],
       border: 0,
       color: props.bordercolor ? COLOR_PALETTE[props.bordercolor] : COLOR_PALETTE.night,
       ':hover:enabled': {

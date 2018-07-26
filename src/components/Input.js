@@ -125,6 +125,7 @@ class Input extends React.Component {
         />
         {togglePassword && type === 'password' && !loading && !icon && (
           <Button
+            type="transparent"
             iFont="fa"
             icon={togglePasswordStatus === 'password' ? 'eye' : 'eye-slash'}
             iconSize={20}

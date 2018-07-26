@@ -119,7 +119,7 @@ class WeekTable extends React.Component {
     return (
       <React.Fragment>
         {!weeklyslots.isLoading && isValid &&
-          <TableContainer>
+          <TableContainer className="planner-week-table">
             <Table
               dataColumns={week}
               headerColor="green"
