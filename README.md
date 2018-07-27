@@ -47,8 +47,11 @@ npm run test
 
 * Snapshot testing is also included.
 
-* E2E tests done in Cypress.
+* E2E tests done in Cypress, but also some Integration. 
 
+``` shell
+npm run teste2e
+```
 
 ### Workflow
 
@@ -59,14 +62,17 @@ npm run test
 5) Leave routing ready in client.
 6) Develop Login with all states on Storybook, mock data.
 7) Bring login to app and connect with Redux store.
-8) Add state persistency.
+8) Add state persistency (localStorage).
 9) Same for planner tables.
 10) Responsive/Compatibility check.
 11) Animations.
+12) Add E2E tests in Cypress + Refactoring.
 
 ### Notes
 
 * ESLint + AirnBnB Styleguide is used for code linting.
+
+* I use the ducks modular approach for Redux. You can check the proposal here: https://github.com/erikras/ducks-modular-redux
 
 * Storybook is used for component development, following the Component Driven Design (CDD) mindset. Snapshots and UI testing could be added there also. This is a common ground with designers also to improve the companies visual Styleguide and use it as a UI Explorer.
 
@@ -76,9 +82,11 @@ npm run test
 
 * If you want to emulate a logout, you can use the route /login on the browser, it will just reset login info if logged. Any other routes (while logged) will just redirect to the Planner.
 
+* Cypress has automated tests for the whole Login & Booking Process.
+
 ## Refactoring / Improvements
 
-* Add Unit Testing for all components (missing Logo, View cases, etc)
+* Add more Integration tests for container components. Keep using Enzyme/Jest (which has some complex scenarios with Redux/Router) or Cypress.
 
 * Texts should be FormattedMessages from react-intl (or similar intl libs) to support multilingual functionality.
 
@@ -102,7 +110,7 @@ npm run test
 
 * Add modals for successful booking messages & warnings/errors.
 
-* There's a case that should be controlled when somebody books the same slot with different users/data. You can do that before receiving updates from the app. It could be controlled with realtime between client/server (like events React-NodeJS), Pub/Sub patterns (like subscriptions in GraphQL), streams (RxJS) or just with more control between Front/Back.
+* There's a case that maybe should be controlled when somebody books the same slot with different users/data. You can do that before receiving updates from the app. It could be controlled with realtime between client/server (like event emitters React-NodeJS), Pub/Sub patterns (like subscriptions in GraphQL), streams (RxJS) or just with more control between Front/Back.
 
 ### Tech Stack
-ReactJS, Redux, Glamorous, Storybook, Webpack4, Jest, Enzyme, Cypress.
+ReactJS, Redux, Router, Glamorous, Storybook, Webpack4, Jest, Enzyme, Cypress.
