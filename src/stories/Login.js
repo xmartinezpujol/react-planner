@@ -129,6 +129,7 @@ class Login extends React.Component {
             Sign in
           </Submit>
           <ForgottenPwd
+            type="transparent"
             bordercolor="blue"
             template="link"
           >
